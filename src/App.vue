@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import authService from "@/api/authService.js";
+import authService from "@/api/auth.service.js";
 
 export default {
   name: "app",

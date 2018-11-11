@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import databaseService from "@/api/databaseService";
+import databaseService from "@/api/database.service";
 
 export default {
   name: "beer-input",
