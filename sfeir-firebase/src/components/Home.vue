@@ -1,24 +1,29 @@
 <template>
-    <v-container>
-        <section>
-            <beer-list class="beer-list"></beer-list>
-            <beer-input></beer-input>
-        </section>
-    </v-container>
+  <v-container>
+    <section>
+      <beer-list class="beer-list"></beer-list>
+      <beer-input v-if="isAuthenticated"></beer-input>
+    </section>
+  </v-container>
 </template>
 
 <script>
 import BeerList from "@/components/BeerList";
 import BeerInput from "@/components/BeerInput";
 
-import api from "@/api";
+import authService from "@/api/authService.js";
 
 export default {
   name: "home",
   data: function() {
     return {
-      isAuthenticated: api.isAuthenticated()
+      authService: authService
     };
+  },
+  computed: {
+    isAuthenticated() {
+      return this.authService.isAuthenticated();
+    }
   },
   components: {
     "beer-list": BeerList,
