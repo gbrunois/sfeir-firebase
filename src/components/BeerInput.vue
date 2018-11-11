@@ -1,14 +1,14 @@
 <template>
-    <div class="beer-input">
-        <v-text-field class="input" placeholder="please enter a beer here" type="text" v-model="beerName"></v-text-field>
-        <v-btn @click="add">
-            <v-icon>send</v-icon>
-        </v-btn>
-    </div>
+  <div class="beer-input">
+    <v-text-field class="input" placeholder="please enter a beer here" type="text" v-model="beerName"></v-text-field>
+    <v-btn @click="add">
+      <v-icon>send</v-icon>
+    </v-btn>
+  </div>
 </template>
 
 <script>
-import api from "@/api";
+import databaseService from "@/api/databaseService";
 
 export default {
   name: "beer-input",
@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     add: function() {
-      api.addNewBeer(this.beerName);
+      databaseService.addNewBeer(this.beerName);
       this.beerName = "";
     }
   }

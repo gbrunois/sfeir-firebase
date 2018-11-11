@@ -11,14 +11,14 @@
 </template>
 
 <script>
-import api from "@/api";
+import databaseService from "@/api/databaseService";
 import BeerItem from "@/components/BeerItem";
 
 export default {
   name: "beer-list",
   data: function() {
     return {
-      beers: api.getBeers()
+      beers: databaseService.getBeers()
     };
   },
   components: {
