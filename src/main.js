@@ -8,6 +8,10 @@ import "material-design-icons-iconfont/dist/material-design-icons.css";
 
 Vue.config.productionTip = false;
 
+import api from "@/api/index.js";
+
+api.initializeApp();
+
 new Vue({
   router,
   render: h => h(App)
