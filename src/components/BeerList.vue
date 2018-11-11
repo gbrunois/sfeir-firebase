@@ -22,7 +22,6 @@ export default {
     };
   },
   mounted: function() {
-    console.log("getBeers");
     databaseService.getBeers(
       onAddNewBeer(this),
       onUpdateBeer(this),
