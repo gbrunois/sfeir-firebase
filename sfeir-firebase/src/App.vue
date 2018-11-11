@@ -11,6 +11,9 @@
         </v-btn>
         <v-list>
           <v-list-tile @click="login" v-if="!isAuthenticated">
+            <v-list-tile-action>
+              <v-icon>exit_to_app</v-icon>
+            </v-list-tile-action>
             <v-list-tile-title>Login</v-list-tile-title>
           </v-list-tile>
           <v-list-tile @click="logout" v-if="isAuthenticated">
@@ -27,25 +30,26 @@
 </template>
 
 <script>
-import api from "@/api";
+import authService from "@/api/authService.js";
 
 export default {
   name: "app",
-  data() {
+  data: function() {
     return {
-      isAuthenticated: api.isAuthenticated()
+      authService: authService
     };
+  },
+  computed: {
+    isAuthenticated() {
+      return this.authService.isAuthenticated();
+    }
   },
   methods: {
     login: function() {
-      api.authenticate();
-      this.$emit("loggedIn");
-      this.isAuthenticated = true;
+      this.$router.push('login')
     },
     logout: function() {
-      api.logout();
-      this.$emit("loggedOut");
-      this.isAuthenticated = false;
+      this.authService.logout();
     }
   }
 };
