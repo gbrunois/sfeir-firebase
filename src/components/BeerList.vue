@@ -1,17 +1,17 @@
 <template>
-    <v-container fluid grid-list-lg>
-        <section>
-            <v-layout row wrap>
-                <v-flex xs12 v-for="(beer) in beers" :key="beer.id">
-                    <beer-item :beer="beer"></beer-item>
-                </v-flex>
-            </v-layout>
-        </section>
-    </v-container>
+  <v-container fluid grid-list-lg>
+    <section>
+      <v-layout row wrap>
+        <v-flex xs12 v-for="(beer) in beers" :key="beer.id">
+          <beer-item :beer="beer"></beer-item>
+        </v-flex>
+      </v-layout>
+    </section>
+  </v-container>
 </template>
 
 <script>
-import databaseService from "@/api/databaseService";
+import databaseService from "@/api/database.service";
 import BeerItem from "@/components/BeerItem";
 
 export default {
