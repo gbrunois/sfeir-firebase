@@ -11,7 +11,7 @@
 import BeerList from "@/components/BeerList";
 import BeerInput from "@/components/BeerInput";
 
-import authService from "@/api/authService.js";
+import authService from "@/api/auth.service.js";
 
 export default {
   name: "home",
