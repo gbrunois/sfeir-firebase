@@ -39,8 +39,8 @@ function addNewBeer(name) {
   });
 }
 
-function getBeers() {
-  return beers;
+function getBeers(onChange) {
+  return onChange(beers);
 }
 
 export default {
