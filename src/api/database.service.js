@@ -3,6 +3,8 @@ import * as firebase from "firebase";
 const usersRates = [];
 const beers = [];
 
+let beersRef;
+
 function addNewBeer(beer) {
   beers.push(beer);
 }
@@ -17,7 +19,7 @@ function rateBeer(rating, beer, user) {
 }
 
 function getBeers(onAddBeer, onUpdateBeer, onDeleteBeer) {
-  const beersRef = firebase
+  beersRef = firebase
     .database()
     .ref("beers")
     .orderByChild("name")
