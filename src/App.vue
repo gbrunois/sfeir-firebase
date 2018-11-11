@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     login: function() {
-      this.$router.push('login')
+      this.$router.push("login");
     },
     logout: function() {
       this.authService.logout();
