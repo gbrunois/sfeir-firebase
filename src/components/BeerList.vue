@@ -18,8 +18,14 @@ export default {
   name: "beer-list",
   data: function() {
     return {
-      beers: databaseService.getBeers()
+      beers: []
     };
+  },
+  mounted: function() {
+    const vm = this;
+    databaseService.getBeers((beers) => {
+      vm.beers = beers;
+    });
   },
   components: {
     "beer-item": BeerItem
