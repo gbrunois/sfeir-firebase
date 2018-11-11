@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import Vue from "vue";
 import databaseService from "@/api/database.service";
 import BeerItem from "@/components/BeerItem";
 
@@ -22,15 +23,39 @@ export default {
     };
   },
   mounted: function() {
-    const vm = this;
-    databaseService.getBeers(beers => {
-      vm.beers = beers;
-    });
+    databaseService.getBeers(
+      onAddNewBeer(this),
+      onUpdateBeer(this),
+      onDeleteBeer(this)
+    );
   },
   components: {
     "beer-item": BeerItem
   }
 };
+
+function onAddNewBeer(vm) {
+  return newBeer => {
+    vm.beers.push(newBeer);
+  };
+}
+function onUpdateBeer(vm) {
+  return beer => {
+    const index = vm.beers.findIndex(b => b.key === beer.key);
+    if (index !== -1) {
+      Vue.set(vm.beers, index, beer);
+    }
+  };
+}
+
+function onDeleteBeer(vm) {
+  return beer => {
+    const index = vm.beers.findIndex(b => b.key === beer.key);
+    if (index !== -1) {
+      vm.beers.splice(index, 1);
+    }
+  };
+}
 </script>
 
 <style scoped>
