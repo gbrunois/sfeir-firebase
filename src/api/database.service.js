@@ -19,6 +19,20 @@ function rateBeer(rating, beer, user) {
   beersRef.push(beer);
 }
 
+function rateBeer(rating, beer, user) {
+  console.debug(`rateABeer(${beer.key}, ${rating})`);
+  firebase
+    .database()
+    .ref(`users-rates/${beer.key}/${user.uid}/rate`)
+    .set(rating, function(error) {
+      if (error) {
+        console.log("Error: " + error.code);
+      } else {
+        console.debug(`rateABeer(${beer.key}) succeed`);
+      }
+    });
+}
+
 function getBeers(onAddBeer, onUpdateBeer, onDeleteBeer) {
   beersRef = firebase.database().ref("beers");
 
