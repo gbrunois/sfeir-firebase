@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import databaseService from "@/api/database.service";
 import BeerItem from "@/components/BeerItem";
 
@@ -42,7 +43,7 @@ function onUpdateBeer(vm) {
   return beer => {
     const index = vm.beers.findIndex(b => b.key === beer.key);
     if (index !== -1) {
-      Object.assign(vm.beers[index], beer);
+      Vue.set(vm.beers, index, beer);
     }
   };
 }
@@ -51,7 +52,7 @@ function onDeleteBeer(vm) {
   return beer => {
     const index = vm.beers.findIndex(b => b.key === beer.key);
     if (index !== -1) {
-      vm.beers(index, 1);
+      vm.beers.splice(index, 1);
     }
   };
 }
