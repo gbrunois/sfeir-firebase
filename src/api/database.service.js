@@ -16,26 +16,25 @@ function rateBeer(rating, beer, user) {
     uid: user.uid,
     rating
   });
+  beersRef.push(beer);
 }
 
 function getBeers(onAddBeer, onUpdateBeer, onDeleteBeer) {
-  beersRef = firebase
-    .database()
-    .ref("beers")
-    .orderByChild("name")
-    .limitToLast(20);
+  beersRef = firebase.database().ref("beers");
 
-  beersRef.on("child_added", data => {
+  const dbRef = beersRef.orderByChild("name").limitToLast(20);
+
+  dbRef.on("child_added", data => {
     const item = data.val();
     item.key = data.key;
     onAddBeer(item);
   });
-  beersRef.on("child_changed", data => {
+  dbRef.on("child_changed", data => {
     const item = data.val();
     item.key = data.key;
     onUpdateBeer(item);
   });
-  beersRef.on("child_removed", data => {
+  dbRef.on("child_removed", data => {
     onDeleteBeer(data.key);
   });
 }
