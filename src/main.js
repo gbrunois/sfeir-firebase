@@ -9,8 +9,10 @@ import "material-design-icons-iconfont/dist/material-design-icons.css";
 Vue.config.productionTip = false;
 
 import api from "@/api/index.js";
+import authService from "@/api/auth.service.js";
 
 api.initializeApp();
+authService.getAuth();
 
 new Vue({
   router,
