@@ -1,7 +1,6 @@
 import * as firebase from "firebase";
 
 let beersRef;
-const usersRates = [];
 
 function addNewBeer(beer) {
   console.debug(`add a new beer ${beer}`);
@@ -10,11 +9,16 @@ function addNewBeer(beer) {
 
 function rateBeer(rating, beer, user) {
   console.debug(`rateABeer(${beer.key}, ${rating})`);
-  usersRates.push({
-    key: beer.key,
-    uid: user.uid,
-    rating
-  });
+  firebase
+    .database()
+    .ref(`users-rates/${beer.key}/${user.uid}/rate`)
+    .set(rating, function(error) {
+      if (error) {
+        console.log("Error: " + error.code);
+      } else {
+        console.debug(`rateABeer(${beer.key}) succeed`);
+      }
+    });
 }
 
 function getBeers(onAddBeer, onUpdateBeer, onDeleteBeer) {
