@@ -15,3 +15,23 @@ Ensuite:
 
 - :sos: `git checkout -f project-01-solution`.
 - :fast_forward: `git checkout -f project-02-readme`.
+
+## Step 2
+
+- Compléter le service d'authentification `src/api/auth.service.js`
+
+```js
+async function authenticate(provider, credentials) {
+}
+
+sync function logout() {
+}
+
+function getAuth() {
+}
+```
+
+Ensuite:
+
+- :sos: `git checkout -f project-02-solution`.
+- :fast_forward: `git checkout -f project-03-readme`.
