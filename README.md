@@ -52,3 +52,18 @@ Ensuite:
 
 - :sos: `git checkout -f project-03-solution`.
 - :fast_forward: `git checkout -f project-04-readme`.
+
+## Step 4
+
+- Compléter la méthode `store` du fichier `src/api/storage.service.js`
+- On stockera les images dans le dossier distant `images`
+- L'url de téléchargement de l'image sera stockée dans l'objet `beer`
+
+```js
+function store() {}
+```
+
+Ensuite:
+
+- :sos: `git checkout -f project-04-solution`.
+- :fast_forward: `git checkout -f project-05-readme`.
