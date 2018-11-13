@@ -35,3 +35,20 @@ Ensuite:
 
 - :sos: `git checkout -f project-02-solution`.
 - :fast_forward: `git checkout -f project-03-readme`.
+
+## Step 3
+
+- Compléter les méthodes accès aux données `src/api/database.service.js`
+
+```js
+function getBeers() {}
+
+function addNewBeer() {}
+
+function rateBeer() {}
+```
+
+Ensuite:
+
+- :sos: `git checkout -f project-03-solution`.
+- :fast_forward: `git checkout -f project-04-readme`.
