@@ -1,21 +1,8 @@
 import * as firebase from "firebase";
 
-const usersRates = [];
-const beers = [];
-
 let beersRef;
 
 function addNewBeer(beer) {
-  beers.push(beer);
-}
-
-function rateBeer(rating, beer, user) {
-  console.debug(`rateABeer(${beer.key}, ${rating})`);
-  usersRates.push({
-    key: beer.key,
-    uid: user.uid,
-    rating
-  });
   beersRef.push(beer);
 }
 
