@@ -1,41 +1,17 @@
-const beers = [
-  {
-    name: "Anosteké Blond",
-    imageUrl: "https://img.saveur-biere.com/img/p/1407-22042-v4_product_img.jpg"
-  },
-  {
-    name: "Orval",
-    imageUrl: "https://img.saveur-biere.com/img/p/1407-22042-v4_product_img.jpg"
-  },
-  {
-    name: "Cuvée des trolls",
-    imageUrl: "https://img.saveur-biere.com/img/p/1407-22042-v4_product_img.jpg"
-  },
-  {
-    name: "Brewdog Punk IPA",
-    imageUrl: "https://img.saveur-biere.com/img/p/1407-22042-v4_product_img.jpg"
-  },
-  {
-    name: "Lindemans Faro",
-    imageUrl: "https://img.saveur-biere.com/img/p/1407-22042-v4_product_img.jpg"
-  },
-  {
-    name: "Lindemans Pêcheresse",
-    imageUrl: "https://img.saveur-biere.com/img/p/1407-22042-v4_product_img.jpg"
-  },
-  {
-    name: "Verte du Mont Blanc",
-    imageUrl: "https://img.saveur-biere.com/img/p/1407-22042-v4_product_img.jpg"
-  },
-  {
-    name: "Rochefort 10",
-    imageUrl: "https://img.saveur-biere.com/img/p/1407-22042-v4_product_img.jpg"
-  }
-];
+import beers from "./beers.mock.json";
 
-function addNewBeer(name) {
-  beers.push({
-    name
+const usersRates = [];
+
+function addNewBeer(beer) {
+  beers.push(beer);
+}
+
+function rateBeer(rating, beer, user) {
+  console.debug(`rateABeer(${beer.key}, ${rating})`);
+  usersRates.push({
+    key: beer.key,
+    uid: user.uid,
+    rating
   });
 }
 
@@ -45,5 +21,6 @@ function getBeers(onChange) {
 
 export default {
   addNewBeer,
-  getBeers
+  getBeers,
+  rateBeer
 };

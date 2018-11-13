@@ -2,7 +2,7 @@
   <v-container fluid grid-list-lg>
     <section>
       <v-layout row wrap>
-        <v-flex xs12 v-for="(beer) in beers" :key="beer.id">
+        <v-flex xs12 v-for="(beer) in beers" :key="beer.key">
           <beer-item :beer="beer"></beer-item>
         </v-flex>
       </v-layout>
@@ -23,7 +23,7 @@ export default {
   },
   mounted: function() {
     const vm = this;
-    databaseService.getBeers((beers) => {
+    databaseService.getBeers(beers => {
       vm.beers = beers;
     });
   },
