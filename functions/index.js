@@ -2,8 +2,9 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 admin.initializeApp();
 
-exports.setAverageRate = functions.database
-  .ref("/users-rates/{beerKey}/{userId}/rate")
+exports.setAverageRate = functions
+  .region("europe-west1")
+  .database.ref("/users-rates/{beerKey}/{userId}/rate")
   .onWrite((change, context) => {
     const userId = context.params.userId;
     const beerKey = context.params.beerKey;
@@ -35,4 +36,39 @@ exports.setAverageRate = functions.database
           .ref(`/beers/${beerKey}/rate`)
           .set(newBeerRate)
       );
+  });
+
+exports.sendMessageNotification = functions
+  .region("europe-west1")
+  .database.ref("/beers/{beer}")
+  .onCreate((snapshot, context) => {
+    console.log(`sendMessageNotification`);
+
+    const val = snapshot.val();
+    const payload = {
+      notification: {
+        title: `New beer added by ${context.auth.token.name}`,
+        body: `${val.name}`
+      }
+    };
+    console.log(`sendMessageNotification ${JSON.stringify(payload)}`);
+
+    return admin
+      .database()
+      .ref("/notifications/tokens")
+      .once("value", snap => {
+        const tokens = [];
+        snap.forEach(child => {
+          tokens.push(child.val());
+          return false;
+        });
+
+        console.log("Found tokens: ", tokens);
+
+        admin
+          .messaging()
+          .sendToDevice(tokens, payload)
+          .then(response => console.log("successfully sent message:", response))
+          .catch(error => console.error("Error sending message:", error));
+      });
   });
