@@ -20,3 +20,4 @@ yarn-error.log*
 *.sln
 *.sw*
 TODO.md
+firebase-debug.log
