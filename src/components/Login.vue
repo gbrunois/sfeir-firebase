@@ -1,25 +1,17 @@
 <template>
-    <v-card>
-        <v-card-title>
-            <div>
-
-            </div>
-
-        </v-card-title>
-        <v-card-text>
-            <p>Use your email/password to sign in</p>
-
-            <v-text-field placeholder="User email" type="email" v-model="email"></v-text-field>
-
-            <v-text-field type="password" placeholder="User password" v-model="password"></v-text-field>
-
-            <button class="login-btn email" @click="loginByEmail()">Sign In</button>
-        </v-card-text>
-        <v-card-actions>
-            <button>Logout</button>
-        </v-card-actions>
-        <button class="login-btn google" @click="loginWithGoogle()">Login with Google</button>
-    </v-card>
+  <v-card>
+    <v-card-text>
+      <p>Use your email/password to sign in</p>
+      <v-text-field placeholder="User email" type="email" v-model="email"></v-text-field>
+      <v-text-field type="password" placeholder="User password" v-model="password"></v-text-field>
+      <v-btn class="login-btn email" @click="loginByEmail()">Sign In</v-btn>
+    </v-card-text>
+    <v-card-actions>
+      <v-layout row>
+        <v-btn class="login-btn google" @click="loginWithGoogle()">Login with Google</v-btn>
+      </v-layout>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script>
