@@ -87,3 +87,10 @@ Ensuite:
 
 - :sos: `git checkout -f project-05-solution`.
 - :fast_forward: `git checkout -f project-06-readme`.
+
+## Step 6
+
+Ensuite:
+
+- :sos: `git checkout -f project-06-solution`.
+- :fast_forward: `git checkout -f project-07-readme`.
