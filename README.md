@@ -90,6 +90,10 @@ Ensuite:
 
 ## Step 6
 
+Scénario: on envoi une notification à chaque fois qu'une nouvelle bière est enregistrée.
+
+-
+
 Ensuite:
 
 - :sos: `git checkout -f project-06-solution`.
