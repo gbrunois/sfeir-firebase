@@ -1,0 +1,16 @@
+{
+  "rules": {
+    "beers": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "notifications": {
+      ".read": false,
+      ".write": true
+    },
+    "users-rates": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    }
+  }
+}
