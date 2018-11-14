@@ -31,6 +31,7 @@
 
 <script>
 import authService from "@/api/auth.service.js";
+import messagingService from "@/api/messaging.service.js";
 
 export default {
   name: "app",
@@ -38,6 +39,9 @@ export default {
     return {
       authService: authService
     };
+  },
+  async mounted() {
+    await messagingService.register();
   },
   computed: {
     isAuthenticated() {
